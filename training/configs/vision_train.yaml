@@ -1,0 +1,27 @@
+# ACT 学習の設定（scripts/train_vision.py）
+dataset_root: "/workspace/dataset/lerobot_dataset/crane_vision_pick"
+repo_id: "crane_vision_pick"
+output_directory: "/workspace/checkpoints/train/crane_vision_pick_act"
+
+# 方策に見せる入力。ここを変えるだけで比較実験ができる
+#   画像あり : [observation.state, observation.images.top]
+#   画像なし : [observation.state, observation.environment_state]   ← 講義のお辞儀と同じ構成
+input_keys: ["observation.state", "observation.images.top"]
+
+device: "auto"              # auto: cuda > mps > cpu
+training_steps: 20000       # Colab T4 で 40〜60 分程度。CPU で試すときは 200 などに
+batch_size: 8
+num_workers: 2
+learning_rate: 1.0e-5       # ACT 論文・LeRobot の既定値
+weight_decay: 1.0e-4
+grad_clip_norm: 10.0
+chunk_size: 20              # 20 ステップ x 0.1 s = 2 秒先まで予測
+n_action_steps: 5           # 1 回の推論で 5 ステップ実行（Mac の CPU 推論が遅くても間に合うように）
+kl_weight: 10.0
+image_augmentation: true    # 明るさ・コントラスト等をランダムに変える（照明変化への頑健性）
+val_ratio: 0.1              # 最後の 10% のエピソードを検証用に取っておく
+val_every: 1000
+save_every: 5000
+log_every: 100
+seed: 0
+use_wandb: false            # true にすると wandb にログ（先に pixi run wandb login）

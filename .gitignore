@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+build/
+install/
+log/
+# データ・モデルはリポジトリに入れない（大きい）
+*.db3
+*.mcap
+dataset/
+checkpoints/
+results/
+*.zip

@@ -1,0 +1,17 @@
+# rosbag → LeRobotDataset 変換の設定（scripts/rosbag2lerobot_vision.py）
+bag_dir: "/workspace/dataset/rosbags/vision_pick"            # collect_demos の --out
+output_dir: "/workspace/dataset/lerobot_dataset/crane_vision_pick"
+repo_id: "crane_vision_pick"
+robot_type: "crane_plus"
+task_name: "pick the red cube and place it in the green tray"
+fps: 10                                  # カメラ (10Hz) に合わせる。重複フレームを作らない
+image_topic: "/camera/image_small"
+image_key: "observation.images.top"
+# 短いエピソードを最長に合わせて最終フレームで埋めるか（講義版は true。ACT は可変長に対応しているので false 推奨）
+pad_to_longest: false
+# データ検証（第2回・第3回）。これを外れたエピソードは変換せずに理由を表示する
+validation:
+  min_image_hz: 7.0                      # 画像の実効周波数（sim 時間）
+  max_image_gap_s: 0.35                  # 画像の最大の抜け
+  max_joint_gap_s: 0.2
+  min_frames: 40
