@@ -45,7 +45,7 @@ Physical AI 応用1講座 最終課題。第5回の演習（テレオペ → ros
 ![位置ごとの成否](docs/figures/success_map.png)
 ![評価 0 回目の関節の動き](docs/figures/joint_traces_trial0.png)
 
-動画: （YouTube の URL）
+動画（1 分 40 秒）: https://youtu.be/SWIsnFdvC2U
 
 ---
 
@@ -75,6 +75,7 @@ training/                     pai_training の pixi 環境で動かすスクリ�
   scripts/make_compare_video.py      同じ配置の評価 bag を左右に並べた比較動画
   scripts/plot_joint_traces.py       評価 bag から関節の動きを条件ごとに重ねて描く（ROS 不要）
   scripts/plot_data_quality.py       データ検証の結果（画像 Hz・抜け）の図
+  scripts/make_submission_video.py   提出動画（文字カード・図・比較クリップ）を組み立てる
   configs/                           変換・学習の設定（画像あり / 画像なし）
   colab/train_on_colab.ipynb         Colab の GPU で学習するノートブック
   tests/                             Gazebo なしで変換・学習を確かめる合成データ

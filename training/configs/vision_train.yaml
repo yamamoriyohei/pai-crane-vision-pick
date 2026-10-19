@@ -9,7 +9,7 @@ output_directory: "/workspace/checkpoints/train/crane_vision_pick_act"
 input_keys: ["observation.state", "observation.images.top"]
 
 device: "auto"              # auto: cuda > mps > cpu
-training_steps: 20000       # Colab T4 で 40〜60 分程度。CPU で試すときは 200 などに
+training_steps: 20000       # Colab A100 で約 18 分（T4 なら 40〜60 分の見込み）。CPU で試すときは 200 などに
 batch_size: 8
 num_workers: 2
 learning_rate: 1.0e-5       # ACT 論文・LeRobot の既定値
